@@ -1,6 +1,16 @@
 version: 0.1
 log:
   level: debug
+loglevel: debug # deprecated: use "log"
+storage:
+  filesystem:
+    rootdirectory: /var/lib/registry
+auth:
+  token:
+    realm: token-realm
+    service: token-service
+    issuer: registry-token-issuer
+    rootcertbundle: /root/certs/bundle
 http:
     addr: localhost:5000
     secret: asecretforlocaldevelopment
