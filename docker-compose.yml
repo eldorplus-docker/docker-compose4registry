@@ -3,9 +3,9 @@ dockerauth:
   ports:
     - "5001:5001"
   volumes:
-    - /root/auth_server/config:/config:ro
-    - /var/log/docker_auth:/logs
-    - /root/auth_server/ssl:/ssl
+    - /home/ec2-user/work/auth_server/config:/config:ro
+    - /home/ec2-user/work/auth_server/logs:/logs
+    - /home/ec2-user/work/auth_server/ssl:/ssl
   command: /config/auth_config.yml
   restart: always
 
@@ -14,8 +14,8 @@ registry:
   ports:
     - "5000:5000"
   volumes:
-    - /root/auth_server/ssl:/ssl
-    - /root/docker_registry/data:/var/lib/registry
+    - /home/ec2-user/work/auth_server/ssl:/ssl
+    - /home/ec2-user/work/docker_registry/data:/var/lib/registry
   restart: always
   environment:
     - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/var/lib/registry
