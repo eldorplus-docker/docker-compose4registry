@@ -12,11 +12,11 @@ token:  # Settings for the tokens.
 
 # Static user map. 
 users:
-  # Password is specified as a BCrypt hash. Use htpasswd -B to generate.
+  # Password is specified as a BCrypt hash. Use htpasswd -B to generate. 
   "admin":
-    password: "$2y$05$B.x046DV3bvuwFgn0I42F.W/SbRU5fUoCbCGtjFl7S33aCUHNBxbq"
+    password: "$2y$05$B.x046DV3bvuwFgn0I42F.W/SbRU5fUoCbCGtjFl7S33aCUHNBxbq" # badmin
   "hussein":
-    password: "$2y$05$xN3hNmNlBIYpST7UzqwK/O5T1/JyXDGuJgKJzf4XuILmvX7L5ensa"
+    password: "$2y$05$xN3hNmNlBIYpST7UzqwK/O5T1/JyXDGuJgKJzf4XuILmvX7L5ensa" # 123
   "": {}  # Allow anonymous (no "docker login") access.
 
 acl:
