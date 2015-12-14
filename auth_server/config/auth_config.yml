@@ -1,0 +1,51 @@
+server:  # Server settings.
+  # Address to listen on.
+  addr: ":5001"
+  # TLS certificate and key.
+  certificate: "/ssl/qy-bundle.crt"
+  key: "/ssl/qy.key"
+
+token:  # Settings for the tokens.
+  issuer: "AuthService"  # Must match issuer in the Registry config.
+  expiration: 900
+  # service: "Docker registry"
+
+
+# Static user map. 
+users:
+  # Password is specified as a BCrypt hash. Use htpasswd -B to generate.
+  "admin":
+    password: "$2y$05$B.x046DV3bvuwFgn0I42F.W/SbRU5fUoCbCGtjFl7S33aCUHNBxbq"
+  "chyshao":
+    password: "$2a$10$unZgGf5r8TWb16Auc48TzuVn1EyUVQqxw.kWioGInL3zW.bA0NlZu"
+  "fxtang":
+    password: "$2a$10$unZgGf5r8TWb16Auc48TzuVn1EyUVQqxw.kWioGInL3zW.bA0NlZu"  
+  "ftwang":
+    password: "$2a$10$unZgGf5r8TWb16Auc48TzuVn1EyUVQqxw.kWioGInL3zW.bA0NlZu"
+  "junren":
+    password: "$2a$10$unZgGf5r8TWb16Auc48TzuVn1EyUVQqxw.kWioGInL3zW.bA0NlZu"
+  "hlyue":
+    password: "$2a$10$unZgGf5r8TWb16Auc48TzuVn1EyUVQqxw.kWioGInL3zW.bA0NlZu"
+  "hussein":
+    password: "$2y$05$xN3hNmNlBIYpST7UzqwK/O5T1/JyXDGuJgKJzf4XuILmvX7L5ensa"
+  "jwyu":
+    password: "$2a$10$unZgGf5r8TWb16Auc48TzuVn1EyUVQqxw.kWioGInL3zW.bA0NlZu"
+
+  "": {}  # Allow anonymous (no "docker login") access.
+
+acl:
+  # Admin has full access to everything.
+  - match: {account: "admin"}
+    actions: ["*"]
+  # User "test" has full access to ubuntu image but nothing else.
+  - match: {account: "hussien", name: "ubuntu"}
+    actions: ["*"]
+  - match: {account: "test"}
+    actions: []
+  # All logged in users can pull all images.
+  - match: {account: "/.+/"}
+    actions: ["pull"]
+  # Anonymous users can pull "hello-world".
+  - match: {account: "", name: "hello-world"}
+    actions: ["pull"]
+  # Access is denied by default.
