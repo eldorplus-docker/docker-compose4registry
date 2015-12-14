@@ -29,10 +29,10 @@ registry:
     - REGISTRY_AUTH_TOKEN_ISSUER="AuthService"
 #    - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/registry.pem
 #    - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/wsois.pem  #WSO2
-    - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/ssl-bundle.crt  #AuthServer
+    - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/qy-bundle.crt  #AuthServer
     - REGISTRY_HTTP_SECRET=admin
 #    - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/server.crt
 #    - REGISTRY_HTTP_TLS_KEY=/ssl/server_nopwd.key
-    - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/ssl-bundle.crt
-    - REGISTRY_HTTP_TLS_KEY=/ssl/hjt.key
+    - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/qy-bundle.crt
+    - REGISTRY_HTTP_TLS_KEY=/ssl/qy.key
 
