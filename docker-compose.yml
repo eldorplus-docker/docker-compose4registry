@@ -14,13 +14,25 @@ registry:
   ports:
     - "5000:5000"
   volumes:
+    - /home/ec2-user/work/auth_server/config:/config:ro
     - /home/ec2-user/work/auth_server/ssl:/ssl
     - /home/ec2-user/work/docker_registry/data:/var/lib/registry
+#  command: /config/registry.yml
   restart: always
   environment:
     - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/var/lib/registry
     - REGISTRY_AUTH=token
-    - REGISTRY_AUTH_TOKEN_REALM=https://localhost:5001/auth
-    - REGISTRY_AUTH_TOKEN_SERVICE="Docker registry"
-    - REGISTRY_AUTH_TOKEN_ISSUER="Auth Service"
-    - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/server.pem
+    - REGISTRY_AUTH_TOKEN_REALM=https://e-titans.net:5001/auth
+#    - REGISTRY_AUTH_TOKEN_REALM=https://localhost:9443/services?client_id=kQd4XGTf3fTofZbddvTfbxqVqvEa
+#    - REGISTRY_AUTH_TOKEN_REALM=https://localhost:9443/oauth2/authorize?client_id=kQd4XGTf3fTofZbddvTfbxqVqvEa
+    - REGISTRY_AUTH_TOKEN_SERVICE="docker-registry"
+    - REGISTRY_AUTH_TOKEN_ISSUER="AuthService"
+#    - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/registry.pem
+#    - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/wsois.pem  #WSO2
+    - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/ssl-bundle.crt  #AuthServer
+    - REGISTRY_HTTP_SECRET=admin
+#    - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/server.crt
+#    - REGISTRY_HTTP_TLS_KEY=/ssl/server_nopwd.key
+    - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/ssl-bundle.crt
+    - REGISTRY_HTTP_TLS_KEY=/ssl/hjt.key
+
