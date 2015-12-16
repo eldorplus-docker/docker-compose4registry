@@ -16,9 +16,9 @@ ldap_auth:
   # "always": setup LDAP over SSL/TLS
   # "starttls": sets StartTLS as the encryption method
   tls: none
-  bind_dn:dc=example,dc=com
-  bind_password_file:
-  base: ou=users, dc=example, dc=com
+  bind_dn:uid=admin,ou=system
+  bind_password_file: "/ssl/pass.txt
+  base: ou=users,dc=example,dc=com
   filter: (&(uid=${account})(objectClass=person))
 acl:
   # This will allow authenticated users to pull/push
