@@ -2,8 +2,8 @@ server:  # Server settings.
   # Address to listen on.
   addr: ":5001"
   # TLS certificate and key.
-  certificate: "/ssl/qy-bundle.crt"
-  key: "/ssl/qy.key"
+  certificate: "/ssl/ssl-bundle.crt"
+  key: "/ssl/hjt.key"
 
 token:  # Settings for the tokens.
   issuer: "AuthService"  # Must match issuer in the Registry config.
