@@ -1,0 +1,36 @@
+server:  # Server settings.
+  # Address to listen on.
+  addr: ":5001"
+  # TLS certificate and key.
+  certificate: "/ssl/qy-bundle.crt"
+  key: "/ssl/qy.key"
+
+token:  # Settings for the tokens.
+  issuer: "AuthService"  # Must match issuer in the Registry config.
+  expiration: 900
+  # service: "Docker registry"
+
+# Google authentication.
+# ==! NB: DO NOT ENTER YOUR GOOGLE PASSWORD AT "docker login". IT WILL NOT WORK.
+# Instead, Auth server maintains a database of Google authentication tokens.
+# Go to the server's port with you browser and follow the "Login with Google account" link.
+# Once signed in, you will get a throw-away password which you can use for Docker login.
+google_auth:
+  # domain: "example.com"  # Optional. If set, only logins fromt his domain are accepted.
+  # client_id and client_secret for API access. Required.
+  # Follow instructions here: https://developers.google.com/identity/sign-in/web/devconsole-project
+  # NB: Make sure JavaScript origins are configured correcly.
+  client_id: "680217901458-iqp8lmijpmmahlsn22koj05fe88ts13p.apps.googleusercontent.com"
+  # Either client_secret or client_secret_file is required. Use client_secret_file if you don't
+  # want to have sensitive information checked in.
+  # client_secret: "verysecret"
+  client_secret_file: "/path/to/client_secret.txt"
+  # Where to store server tokens. Required.
+  token_db: "/somewhere/to/put/google_tokens.ldb"
+  # How long to wait when talking to Google servers. Optional.
+  http_timeout: 10
+acl:
+  # This will allow authenticated users to pull/push
+  - match:
+      account: /.+/
+    actions: ['*']
