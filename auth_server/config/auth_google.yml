@@ -2,8 +2,8 @@ server:  # Server settings.
   # Address to listen on.
   addr: ":5001"
   # TLS certificate and key.
-  certificate: "/ssl/qy-bundle.crt"
-  key: "/ssl/qy.key"
+  certificate: "/ssl/ssl-bundle.crt"
+  key: "/ssl/hjt.key"
 
 token:  # Settings for the tokens.
   issuer: "AuthService"  # Must match issuer in the Registry config.
@@ -24,9 +24,9 @@ google_auth:
   # Either client_secret or client_secret_file is required. Use client_secret_file if you don't
   # want to have sensitive information checked in.
   # client_secret: "verysecret"
-  client_secret_file: "/path/to/client_secret.txt"
+  client_secret_file: "/ssl/g-client_secret.txt"
   # Where to store server tokens. Required.
-  token_db: "/somewhere/to/put/google_tokens.ldb"
+  token_db: "/ssl/google_tokens.ldb"
   # How long to wait when talking to Google servers. Optional.
   http_timeout: 10
 acl:
