@@ -6,7 +6,7 @@ dockerauth:
     - /home/ec2-user/work/docker-compose4registry/auth_server/config:/config:ro
     - /home/ec2-user/work/docker-compose4registry/auth_server/logs:/logs
     - /home/ec2-user/work/docker-compose4registry/auth_server/ssl:/ssl
-  command: /config/auth_config.yml
+  command: /config/auth_google.yml
   restart: always
 
 registry:
@@ -29,10 +29,10 @@ registry:
     - REGISTRY_AUTH_TOKEN_ISSUER="AuthService"
 #    - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/registry.pem
 #    - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/wsois.pem  #WSO2
-    - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/qy-bundle.crt  #AuthServer
+    - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/ssl-bundle.crt  #AuthServer
     - REGISTRY_HTTP_SECRET=admin
 #    - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/server.crt
 #    - REGISTRY_HTTP_TLS_KEY=/ssl/server_nopwd.key
-    - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/qy-bundle.crt
-    - REGISTRY_HTTP_TLS_KEY=/ssl/qy.key
+    - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/ssl-bundle.crt
+    - REGISTRY_HTTP_TLS_KEY=/ssl/hjt.key
 
