@@ -20,9 +20,11 @@ registry:
 #  command: /config/registry.yml
   restart: always
   environment:
+    - REGISTRY_LOG_LEVEL=debug
+    - REGISTRY_FOMATTER=text
     - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/var/lib/registry
     - REGISTRY_AUTH=token
-    - REGISTRY_AUTH_TOKEN_REALM=https://e-titans.net:5001/auth
+    - REGISTRY_AUTH_TOKEN_REALM=https://qingyuanos.com:5001/auth
 #    - REGISTRY_AUTH_TOKEN_REALM=https://localhost:9443/services?client_id=kQd4XGTf3fTofZbddvTfbxqVqvEa
 #    - REGISTRY_AUTH_TOKEN_REALM=https://localhost:9443/oauth2/authorize?client_id=kQd4XGTf3fTofZbddvTfbxqVqvEa
     - REGISTRY_AUTH_TOKEN_SERVICE="docker-registry"
