@@ -1,0 +1,27 @@
+server:  # Server settings.
+  # Address to listen on.
+  addr: ":5001"
+  # TLS certificate and key.
+  certificate: "/ssl/ssl-bundle.crt"
+  key: "/ssl/hjt.key"
+
+token:  # Settings for the tokens.
+  issuer: "AuthService"  # Must match issuer in the Registry config.
+  expiration: 900
+
+ldap_auth:
+  addr: 52.77.219.83:10389
+  # Setup tls connection method to be
+  # "" or "none": the communication won't be encrypted
+  # "always": setup LDAP over SSL/TLS
+  # "starttls": sets StartTLS as the encryption method
+  tls: none
+  bind_dn: "uid=admin,ou=system"
+  bind_password_file: "/ssl/pass.txt"
+  base: "ou=users,dc=example,dc=com"
+  filter: (&(uid=${account})(objectClass=person))
+acl:
+  # This will allow authenticated users to pull/push
+  - match:
+      account: /.+/
+    actions: ['*']
