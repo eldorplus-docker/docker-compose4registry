@@ -2,7 +2,7 @@ server:  # Server settings.
   # Address to listen on.
   addr: ":5001"
   # TLS certificate and key.
-  certificate: "/ssl/qy-bundle.crt"
+  certificate: "/ssl/qy-auth-server.crt"
   key: "/ssl/qy.key"
 
 token:  # Settings for the tokens.
@@ -10,7 +10,7 @@ token:  # Settings for the tokens.
   expiration: 900
 
 ldap_auth:
-  addr: 54.223.108.230:10389
+  addr: 10.0.0.97:10389
   # Setup tls connection method to be
   # "" or "none": the communication won't be encrypted
   # "always": setup LDAP over SSL/TLS
@@ -18,7 +18,7 @@ ldap_auth:
   tls: none
   bind_dn: "uid=admin,ou=system"
   bind_password_file: "/ssl/pass.txt"
-  base: "ou=users,dc=example,dc=com"
+  base: "ou=Users,dc=WSO2,dc=ORG"
   filter: (&(uid=${account})(objectClass=person))
 acl:
   # This will allow authenticated users to pull/push
