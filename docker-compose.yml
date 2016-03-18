@@ -3,9 +3,9 @@ dockerauth:
   ports:
     - "5001:5001"
   volumes:
-    - ${HOME}/work/docker-compose4registr/auth_server/config:/config:ro
-    - ${HOME}/work/docker-compose4registr/auth_server/logs:/logs
-    - ${HOME}/cert:/ssl
+    - /home/hjtjun/work/docker-compose4registry/auth_server/config:/config:ro
+    - /home/hjtjun/work/docker-compose4registry/auth_server/logs:/logs
+    - /home/hjtjun/cert:/ssl
   command: /config/auth_config.yml
   restart: always
 
@@ -14,9 +14,9 @@ registry:
   ports:
     - "5000:5000"
   volumes:
-    - ${HOME}/work/docker-compose4registr/auth_server/config:/config:ro
-    - ${HOME}/cert:/ssl
-    - ${HOME}/docker_registry/data:/var/lib/registry
+    - /home/hjtjun/work/docker-compose4registry/auth_server/config:/config:ro
+    - /home/hjtjun/cert:/ssl
+    - /home/hjtjun/docker_registry/data:/var/lib/registry
   restart: always
   environment:
     - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/var/lib/registry
