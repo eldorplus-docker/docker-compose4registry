@@ -21,7 +21,7 @@ registry:
   environment:
     - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/var/lib/registry
     - REGISTRY_AUTH=token
-    - REGISTRY_AUTH_TOKEN_REALM=https://e-titans.net:5001/auth
+    - REGISTRY_AUTH_TOKEN_REALM=https://localhost:5001/auth
     - REGISTRY_AUTH_TOKEN_SERVICE="docker-registry"
     - REGISTRY_AUTH_TOKEN_ISSUER="AuthService"
     - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/server.crt  #AuthServer
