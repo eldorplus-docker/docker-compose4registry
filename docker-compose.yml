@@ -6,7 +6,7 @@ dockerauth:
     - /home/ec2-user/work/docker-compose4registry/auth_server/config:/config:ro
     - /home/ec2-user/work/docker-compose4registry/auth_server/logs:/logs
     - /home/ec2-user/work/docker-compose4registry/auth_server/ssl:/ssl
-  command: /config/auth_google.yml
+  command: /config/auth_config.yml
   restart: always
 
 registry:
