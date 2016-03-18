@@ -24,8 +24,8 @@ registry:
     - REGISTRY_AUTH_TOKEN_REALM=https://e-titans.net:5001/auth
     - REGISTRY_AUTH_TOKEN_SERVICE="docker-registry"
     - REGISTRY_AUTH_TOKEN_ISSUER="AuthService"
-    - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/ssl-bundle.crt  #AuthServer
+    - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/server.crt  #AuthServer
     - REGISTRY_HTTP_SECRET=admin
-    - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/ssl-bundle.crt
-    - REGISTRY_HTTP_TLS_KEY=/ssl/hjt.key
+    - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/server.crt
+    - REGISTRY_HTTP_TLS_KEY=/ssl/server.key
 
