@@ -30,6 +30,9 @@ acl:
   - match: {account: "/.+/"}
     actions: ["pull"]
     comment: "Logged in users can pull all images."
+  - match: {account: "/.+/", name: "catalog"}
+    actions: ["*"]
+    comment: "Logged in users can view all images."
   - match: {account: "", name: "hello-world"}
     actions: ["pull"]
     comment: "Anonymous users can pull \"hello-world\"."
