@@ -37,15 +37,16 @@ acl:
   # Admin has full access to everything.
   - match: {account: "admin"}
     actions: ["*"]
-  # User "test" has full access to ubuntu image but nothing else.
-  - match: {account: "hussien", name: "ubuntu"}
+    comment: "Admin has full access to everything."
+  - match: {account: "/.+/", name: "${account}/*"}
     actions: ["*"]
-  - match: {account: "test"}
-    actions: []
-  # All logged in users can pull all images.
+    comment: "Logged in users have full access to images that are in their 'namespace'"
   - match: {account: "/.+/"}
     actions: ["pull"]
-  # Anonymous users can pull "hello-world".
+    comment: "Logged in users can pull all images."
+  - match: {account: "/.+/", name: "catalog"}
+    actions: ["*"]
+    comment: "Logged in users can view all images."
   - match: {account: "", name: "hello-world"}
     actions: ["pull"]
-  # Access is denied by default.
+    comment: "Anonymous users can pull \"hello-world\"."
