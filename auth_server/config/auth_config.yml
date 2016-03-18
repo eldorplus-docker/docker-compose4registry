@@ -34,19 +34,18 @@ users:
   "": {}  # Allow anonymous (no "docker login") access.
 
 acl:
-  # Admin has full access to everything.
   - match: {account: "admin"}
     actions: ["*"]
     comment: "Admin has full access to everything."
+  - match: {account: "/.+/", name: "catalog"}
+    actions: ["*"]
+    comment: "Logged in users can view all images."
   - match: {account: "/.+/", name: "${account}/*"}
     actions: ["*"]
     comment: "Logged in users have full access to images that are in their 'namespace'"
   - match: {account: "/.+/"}
     actions: ["pull"]
     comment: "Logged in users can pull all images."
-  - match: {account: "/.+/", name: "catalog"}
-    actions: ["*"]
-    comment: "Logged in users can view all images."
   - match: {account: "", name: "hello-world"}
     actions: ["pull"]
     comment: "Anonymous users can pull \"hello-world\"."
