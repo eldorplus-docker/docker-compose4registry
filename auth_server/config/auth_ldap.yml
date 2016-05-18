@@ -10,7 +10,7 @@ token:  # Settings for the tokens.
   expiration: 900
 
 ldap_auth:
-  addr: 10.0.0.97:10389
+  addr: 172.28.90.32:10389
   # Setup tls connection method to be
   # "" or "none": the communication won't be encrypted
   # "always": setup LDAP over SSL/TLS
