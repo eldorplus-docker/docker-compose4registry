@@ -21,7 +21,15 @@ ldap_auth:
   base: "ou=Users,dc=WSO2,dc=ORG"
   filter: (&(uid=${account})(objectClass=person))
 acl:
-  # This will allow authenticated users to pull/push
-  - match:
-      account: /.+/
-    actions: ['*']
+  - match: {account: "admin"}
+    actions: ["*"]
+    comment: "Admin has full access to everything."
+  - match: {account: "/.+/", name: "${account}/*"}
+    actions: ["*"]
+    comment: "Logged in users have full access to images that are in their 'namespace'"
+  - match: {account: "/.+/"}
+    actions: ["pull"]
+    comment: "Logged in users can pull all images."
+  - match: {account: "", name: "hello-world"}
+    actions: ["pull"]
+    comment: "Anonymous users can pull \"hello-world\"."
